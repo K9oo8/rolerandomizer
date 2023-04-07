@@ -7,22 +7,35 @@
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
     </head>
-    <body style="background-color:gray;font-family:monospace;font-size:2vw;color:black;">
+    <body style="background-color:Plum;font-family:monospace;font-size:2vw;color:black;">
         <div style="font-family:monospace;font-size:3vw" font-size: 40px>Enter Players</div>
         <input type="text" style="font-family:monospace;font-size:2vw" id="player-input" placeholder="player"/>
         <button id="submit-button" style="font-family:monospace;font-size:2vw" type="submit" pys-onClick="main">[SUBMIT]</button>
-        <div>ඞ</div>
+        <button id="champion-button" style="font-family:monospace;font-size:2vw" type="submit" pys-onClick="randomizechampions">[ROLL CHAMPS]</button>
+        <div id="amogus">ඞ loading...</div>
         <div id="player1">Player 1: </div>
         <div id="player2">Player 2: </div>
         <div id="player3">Player 3: </div>
         <div id="player4">Player 4: </div>
         <div id="player5">Player 5: </div>
+        <!--<div>debug below</div>
+        <div id="runcount">0 0</div>-->
 
     <py-script>
     import random
 
     players = []
+    
 
+    top = ["Aatrox","Akali","Camille","Cassiopeia","Cho'gath","Darius","Dr.mundo","Fiora","Gangplank","Garne","Gnar","Gwen","Hecarim","Illaoi","Irelia","Jax","Jayce","K'sante","Kayle","Kennen","Kled","Malphite","Mordekaiser","Nasus","Ornn","Poppy","Quinn","Renekton","Riven","Rumble","Sett","Shen","Singed","Sion","Swain","Sylas","Tahm kench","Teemo","Tryndamere","Urgot","Vayne","Vladimir","Volibear","Wukong","Yasuo","Yorick"]
+    jg = ["Amumu","Bel'veth","Diana","Ekko","Elise","Evelynn","Fiddlesticks","Gragas","Graves","Hecarim","Ivern","Jarvin iv","Jax","Karthus","Kayn","Khazix","Kindred","Lee sin","Lillia","Master yi","Nidalee","Nocturne","Nunu & willump","Olaf","Rammus","Rek'sai","Rengar","Sejuani","Sett","Shaco","Shyvana","Skarner","Taliyah","Trundle","Udyr","Vi","Viego","Volibear","Warwick","Xin zhao","Zac"]
+    mid = ["Ahri","Akali","Akshan","Anivia","Annie","Aurelion sol","Azir","Cassiopeia","Corki","Diana","Ekki","Fizz","Galio","Heimerdinger","Irelia","Kassadin","Katarina","Leblanc","Lissandra","Lux ","Malzahar","Neeko","Nunu & willump","Orianna","Pantheon","Qiyana","Ryze","Swain","Sylas","Syndra","Talon","Twisted fate","Veigar","Vel'koz","Vex","Viktor","Vladimir","Xerath","Yasuo","Yone","Zed","Ziggs","Zoe"]
+    bot = ["Aphelios","Ashe","Caitlyn","Cassiopeia","Draven","Ezreal","Jhin","Jinx","Kai'sa","Kalista","Kog'ma","Lucian","Miss fortune","Nilah","Samira","Senna","Sivir","Tristana","Twitch","Varus","Vayne","Xayah","Zeri"]
+    supp = ["Alistar","Amumu","Bard","Blitzcrank","Brand","Braum","Galio","Janna","Karma","Leona","Lulu","Lux","Malphite","Milio","Morgana","Nami","Nautilus","Pantheon","Pyke","Rakan","Renata Glasc","Senna","Sett","Sona","Soraka","Swain","Taric","Thresh","Vel'koz","Xerath","Yuumi","Zilean","Rell","Seraphine","Zyra",]
+    
+    
+    
+    
     class runs:
         def __init__(self, count):
             self.count = count
@@ -32,37 +45,52 @@
     def main(*args, **kwargs):
 
         new_player = Element('player-input').element.value
-
-        players.append(new_player)
+        if runs.count <= 4:
+            new_player = new_player.capitalize()
+            players.append(new_player)
 
         if runs.count == 0:
             Element('player1').write(f'Player 1: {new_player}')
-            Element('player-input').write(' ')
             runs.count = runs.count + 1
+            #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 1:
             Element('player2').write(f'Player 2: {new_player}')
-            Element('player-input').write(' ')
             runs.count = runs.count + 1
+            #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 2:
             Element('player3').write(f'Player 3: {new_player}')
-            Element('player-input').write(' ')
             runs.count = runs.count + 1
+            #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 3:
             Element('player4').write(f'Player 4: {new_player}')
-            Element('player-input').write(' ')
             runs.count = runs.count + 1
+            #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 4:
             Element('player5').write(f'Player 5: {new_player}')
-            Element('player-input').write(' ')
             runs.count = runs.count + 1
-
-        if len(players) == 5:
-            random.shuffle(players)
-            Element('player1').write(f'....Top : {players[0]}')
-            Element('player2').write(f'.Jungle : {players[1]}')
-            Element('player3').write(f'....Mid : {players[2]}')
-            Element('player4').write(f'....Bot : {players[3]}')
-            Element('player5').write(f'Support : {players[4]}')
+            #Element('runcount').write(f'{runs.count} {len(players)} {players}')
+            Element('submit-button').write('[REROLL]')
+            randomize()
+        elif runs.count == 5:
+            randomize()
+        
+    def randomize(*args, **kwargs):
+        random.shuffle(players)
+        Element('player1').write(f'....Top : {players[0]}')
+        Element('player2').write(f'.Jungle : {players[1]}')
+        Element('player3').write(f'....Mid : {players[2]}')
+        Element('player4').write(f'....Bot : {players[3]}')
+        Element('player5').write(f'Support : {players[4]}')
+    
+    def randomizechampions(*args, **kwargs):
+        Element('player1').write(f'....Top : {players[0]} {random.choice(top)}')
+        Element('player2').write(f'.Jungle : {players[1]} {random.choice(jg)}')
+        Element('player3').write(f'....Mid : {players[2]} {random.choice(mid)}')
+        Element('player4').write(f'....Bot : {players[3]} {random.choice(bot)}')
+        Element('player5').write(f'Support : {players[4]} {random.choice(supp)}')
+        Element('champion-button').write('[REROLL CHAMPS]')
+            
+    Element('amogus').write('ඞ Ready!')
     </py-script>
     </body>
 </html>
