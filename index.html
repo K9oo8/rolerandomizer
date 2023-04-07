@@ -1,6 +1,6 @@
 <html>
     <head>
-        <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
+        <link rel="stylesheet" type="text/css" href="style.css">
         <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
         <title>Role Randomizer</title>
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -8,8 +8,9 @@
         <meta http-equiv="Expires" content="0" />
     </head>
     <body style="background-color:Plum;font-family:monospace;font-size:2vw;color:black;">
+    <div id="container">
         <div style="font-family:monospace;font-size:3vw" font-size: 40px>Enter Players</div>
-        <input type="text" style="font-family:monospace;font-size:2vw" id="player-input" placeholder="player"/>
+        <input type="text" style="font-family:monospace;font-size:2vw" id="player-input" onfocus="this.value=''" placeholder="player"/>
         <button id="submit-button" style="font-family:monospace;font-size:2vw" type="submit" pys-onClick="main">[SUBMIT]</button>
         <button id="champion-button" style="font-family:monospace;font-size:2vw" type="submit" pys-onClick="randomizechampions">[ROLL CHAMPS]</button>
         <div id="amogus">ඞ loading...</div>
@@ -92,5 +93,9 @@
             
     Element('amogus').write('ඞ Ready!')
     </py-script>
+    </div>
+    <footer id="footer">
+        <small style="font-family:monospace;font-size:1vw">written by k9oo8 for the great state of colorado // me ---> (*≧︶≦)(≧︶≦*) <--- colorado</small>
+    </footer>
     </body>
 </html>
