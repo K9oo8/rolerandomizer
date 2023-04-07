@@ -1,60 +1,68 @@
 <html>
-<head>
-    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-    <title>beep boop</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-</head>
-<body>
-<div>Enter Players</div>
-<input type="text" id="player-input" value=" "/>
-<button id="submit-button" type="submit" pys-onClick="main">OK</button>
-<div id="player1">Player 1: </div>
-<div id="player2">Player 2: </div>
-<div id="player3">Player 3: </div>
-<div id="player4">Player 4: </div>
-<div id="player5">Player 5: </div>
-<div id="output">output</div>
+    <head>
+        <!-- <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" /> -->
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <title>Role Randomizer</title>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+    </head>
+    <body style="background-color:gray;font-family:monospace;font-size:2vw">
+        <div style="font-family:monospace;font-size:3vw" font-size: 40px>Enter Players</div>
+        <input type="text" style="font-family:monospace;font-size:2vw" id="player-input" placeholder="player"/>
+        <button id="submit-button" style="font-family:monospace;font-size:2vw" type="submit" pys-onClick="main">[SUBMIT]</button>
+        <div>ඞ</div>
+        <div id="player1">Player 1: </div>
+        <div id="player2">Player 2: </div>
+        <div id="player3">Player 3: </div>
+        <div id="player4">Player 4: </div>
+        <div id="player5">Player 5: </div>
 
-<py-script>
-import random
+    <py-script>
+    import random
 
-players = []
+    players = []
 
-class runs:
-    def __init__(self, count):
-        self.count = count
+    class runs:
+        def __init__(self, count):
+            self.count = count
 
-runs.count = 0
+    runs.count = 0
 
-def main(*args, **kwargs):
-    #roles = ['Top', 'Jungle', 'Mid', 'Bot', 'Support']
+    def main(*args, **kwargs):
 
-    new_player = Element('player-input').element.value
+        new_player = Element('player-input').element.value
 
-    players.append(new_player)
-    if runs.count == 0:
-        Element('player1').write(f'Player 1: {new_player}')
-        runs.count = runs.count + 1
-    elif runs.count == 1:
-        Element('player2').write(f'Player 2: {new_player}')
-        runs.count = runs.count + 1
-    elif runs.count == 2:
-        Element('player3').write(f'Player 3: {new_player}')
-        runs.count = runs.count + 1
-    elif runs.count == 3:
-        Element('player4').write(f'Player 4: {new_player}')
-        runs.count = runs.count + 1
-    elif runs.count == 4:
-        Element('player5').write(f'Player 5: {new_player}')
-        runs.count = runs.count + 1
+        players.append(new_player)
 
-    if len(players) == 5:
-        random.shuffle(players)
-        for role, player, i in zip(roles, players, range(5)):
-            Element('output').write('5 playersfound')
-</py-script>
-</body>
+        if runs.count == 0:
+            Element('player1').write(f'Player 1: {new_player}')
+            Element('player-input').write(' ')
+            runs.count = runs.count + 1
+        elif runs.count == 1:
+            Element('player2').write(f'Player 2: {new_player}')
+            Element('player-input').write(' ')
+            runs.count = runs.count + 1
+        elif runs.count == 2:
+            Element('player3').write(f'Player 3: {new_player}')
+            Element('player-input').write(' ')
+            runs.count = runs.count + 1
+        elif runs.count == 3:
+            Element('player4').write(f'Player 4: {new_player}')
+            Element('player-input').write(' ')
+            runs.count = runs.count + 1
+        elif runs.count == 4:
+            Element('player5').write(f'Player 5: {new_player}')
+            Element('player-input').write(' ')
+            runs.count = runs.count + 1
+
+        if len(players) == 5:
+            random.shuffle(players)
+            Element('player1').write(f'....Top : {players[0]}')
+            Element('player2').write(f'.Jungle : {players[1]}')
+            Element('player3').write(f'....Mid : {players[2]}')
+            Element('player4').write(f'....Bot : {players[3]}')
+            Element('player5').write(f'Support : {players[4]}')
+    </py-script>
+    </body>
 </html>
