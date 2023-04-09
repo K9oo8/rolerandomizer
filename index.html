@@ -54,23 +54,23 @@
             players.append(new_player)
 
         if runs.count == 0:
-            Element('player1').write(f'Player 1: {new_player}')
+            Element('player1').write(f'Player 1: {new_player:.>9}')
             runs.count = runs.count + 1
             #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 1:
-            Element('player2').write(f'Player 2: {new_player}')
+            Element('player2').write(f'Player 2: {new_player:.>9}')
             runs.count = runs.count + 1
             #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 2:
-            Element('player3').write(f'Player 3: {new_player}')
+            Element('player3').write(f'Player 3: {new_player:.>9}')
             runs.count = runs.count + 1
             #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 3:
-            Element('player4').write(f'Player 4: {new_player}')
+            Element('player4').write(f'Player 4: {new_player:.>9}')
             runs.count = runs.count + 1
             #Element('runcount').write(f'{runs.count} {len(players)} {players}')
         elif runs.count == 4:
-            Element('player5').write(f'Player 5: {new_player}')
+            Element('player5').write(f'Player 5: {new_player:.>9}')
             runs.count = runs.count + 1
             #Element('runcount').write(f'{runs.count} {len(players)} {players}')
             Element('submit-button').write('[REROLL]')
@@ -81,18 +81,18 @@
         
     def randomize(*args, **kwargs):
         random.shuffle(players)
-        Element('player1').write(f'....Top : {players[0]}')
-        Element('player2').write(f'.Jungle : {players[1]}')
-        Element('player3').write(f'....Mid : {players[2]}')
-        Element('player4').write(f'....Bot : {players[3]}')
-        Element('player5').write(f'Support : {players[4]}')
+        Element('player1').write(f'....Top : {players[0]:.>9}')
+        Element('player2').write(f'.Jungle : {players[1]:.>9}')
+        Element('player3').write(f'....Mid : {players[2]:.>9}')
+        Element('player4').write(f'....Bot : {players[3]:.>9}')
+        Element('player5').write(f'Support : {players[4]:.>9}')
     
     def randomizechampions(*args, **kwargs):
-        Element('player1').write(f'....Top : {players[0]} Champ: {random.choice(top)}')
-        Element('player2').write(f'.Jungle : {players[1]} Champ: {random.choice(jg)}')
-        Element('player3').write(f'....Mid : {players[2]} Champ: {random.choice(mid)}')
-        Element('player4').write(f'....Bot : {players[3]} Champ: {random.choice(bot)}')
-        Element('player5').write(f'Support : {players[4]} Champ: {random.choice(supp)}')
+        Element('player1').write(f'....Top : {players[0]:.>9} Champ: {random.choice(top)}')
+        Element('player2').write(f'.Jungle : {players[1]:.>9} Champ: {random.choice(jg)}')
+        Element('player3').write(f'....Mid : {players[2]:.>9} Champ: {random.choice(mid)}')
+        Element('player4').write(f'....Bot : {players[3]:.>9} Champ: {random.choice(bot)}')
+        Element('player5').write(f'Support : {players[4]:.>9} Champ: {random.choice(supp)}')
         Element('champion-button').write('[REROLL CHAMPS]')
             
     Element('amogus').write('ඞ Ready!')
